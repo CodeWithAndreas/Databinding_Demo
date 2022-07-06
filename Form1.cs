@@ -22,20 +22,35 @@ namespace Databinding_Demo
             cb_Person.DataSource = persons;
             cb_Person.DisplayMember = "AnzeigeName1";
 
+            AktualisiereTextboxen();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void AktualisiereTextboxen()
         {
-            
+            tb_vorname.DataBindings.Clear();
+            tb_nachname.DataBindings.Clear();
+            tb_email.DataBindings.Clear();
+
+            tb_vorname.DataBindings.Add("Text", (cb_Person.SelectedItem as Person), "Vorname");
+            tb_nachname.DataBindings.Add("Text", (cb_Person.SelectedItem as Person), "Nachname");
+            tb_email.DataBindings.Add("Text", (cb_Person.SelectedItem as Person), "Email");
         }
+
+
+
 
         private List<Person> ErstellePersonenListe()
         {
             Person p1 = new Person("Susi", "Sorglos");
+            p1.Email = "susi@sorglos.bsp";
             Person p2 = new Person("Max", "Muster");
+            p2.Email = "max@muster.bsp";
             Person p3 = new Person("Peter", "Pan");
+            p3.Email = "peter@pan.bsp";
             Person p4 = new Person("Gustav", "Gans");
+            p4.Email = "gustav@gans.bsp";
             Person p5 = new Person("Heidi", "Alpenglück");
+            p5.Email = "heidi@alpenglueck.bsp";
 
             List<Person> t_liste = new List<Person>();
             t_liste.Add(p1);
@@ -62,6 +77,11 @@ namespace Databinding_Demo
                 cb_Person.DataSource = persons;
                 cb_Person.DisplayMember = "AnzeigeName2";
             }
+        }
+
+        private void cb_Person_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AktualisiereTextboxen();
         }
     }
 }
