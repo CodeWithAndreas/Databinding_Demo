@@ -45,6 +45,8 @@ namespace Databinding_Demo
         public string TelefonNr { get; set; }
         public string Email { get; set; }
 
+        public float Position { get; set; }
+
         // Neue Eigenschaft
 
         public string AnzeigeName1
@@ -55,6 +57,8 @@ namespace Databinding_Demo
         {
             get { return this.Vorname + " " + this.Nachname; }
         }
+
+        
 
 
     }

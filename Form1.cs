@@ -13,13 +13,17 @@ namespace Databinding_Demo
     public partial class Form1 : Form
     {
         List<Person> persons = new List<Person>();
+        BindingSource bindingSource;
 
         public Form1()
         {
             InitializeComponent();
             persons = ErstellePersonenListe();
 
-            cb_Person.DataSource = persons;
+            bindingSource = new BindingSource();
+            bindingSource.DataSource = persons;
+           
+            cb_Person.DataSource = bindingSource;
             cb_Person.DisplayMember = "AnzeigeName1";
 
             AktualisiereTextboxen();
@@ -43,14 +47,19 @@ namespace Databinding_Demo
         {
             Person p1 = new Person("Susi", "Sorglos");
             p1.Email = "susi@sorglos.bsp";
+            p1.Position = 1.2f;
             Person p2 = new Person("Max", "Muster");
             p2.Email = "max@muster.bsp";
+            p2.Position = 5.5f;
             Person p3 = new Person("Peter", "Pan");
             p3.Email = "peter@pan.bsp";
+            p3.Position = 12.12f;
             Person p4 = new Person("Gustav", "Gans");
             p4.Email = "gustav@gans.bsp";
+            p4.Position = 44.2f;
             Person p5 = new Person("Heidi", "Alpenglück");
             p5.Email = "heidi@alpenglueck.bsp";
+            p5.Position = 0.8f;
 
             List<Person> t_liste = new List<Person>();
             t_liste.Add(p1);
